@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/style.css' %}">
+    
+</head>
+
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" id="alert" role="alert">
+        <div class="message" id="message">{{ message }}</div>
+        <button type="button" class="close" id="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="content">
+        <div>
+            <h2 class="main_heading text">Welcome To SythalAI</h2>
+        </div>
+
+
+        {% if user.is_authenticated %}
+        <div>
+            <h3 class="sub_heading text">Hello <span class="name">{{ first_name }}</span>,</h3>
+            <h4 class="sub_heading text">You're successfully logged in.</h4>
+        </div>
+        <div>
+            <button type="submit" class="btn"><a href="/signout">Sign Out</a></button>
+        </div>
+        {% else %}
+        <div>
+            <button type="submit" class="btn"><a href="/signup">Sign Up</a></button>
+            <button type="submit" class="btn"><a href="/signin">Sign In</a></button>
+        </div>
+        {% endif %}
+
+    </div>
+    <script src="{% static 'authentication/script.js' %}"></script>
+</body>
+
+</html>

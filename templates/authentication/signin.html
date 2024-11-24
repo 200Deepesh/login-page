@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/signup.css' %}">
+</head>
+
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" id="alert" role="alert">
+        <div class="message">{{ message }}</div>
+        <button type="button" class="close" id="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="content">
+        <h3 class="main_heading">Sign In</h3>
+
+        <form action="/signin" class="form" method="post">
+            {% csrf_token %}
+            <div class="input">
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" placeholder="Enter Your User Name" required>
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+            </div>
+            <div>
+                <button type="submit" class="btn">Sign In</button>
+            </div>
+        </form>
+    </div>
+    <script src="{% static 'authentication/script.js' %}"></script>
+
+</body>
+
+</html>

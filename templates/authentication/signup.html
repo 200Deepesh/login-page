@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/signup.css' %}">
+
+</head>
+
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" id="alert" role="alert">
+        <div class="message">{{ message }}</div>
+        <button type="button" class="close" id="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="content">
+        <h3 class="main_heading">Sign Up</h3>
+
+
+        <form action="/signup" class="form" method="post">
+            {% csrf_token %}
+
+
+            <div class="input">
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" placeholder="Create a User Name" required>
+            </div>
+
+            <div class="input">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name" required>
+            </div>
+
+            <div class="input">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name" required>
+            </div>
+
+            <div class="input">
+                <label for="email">E-mail Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter Your Email Address" required>
+            </div>
+
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+            </div>
+
+            <div class="input">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Your Password"
+                    required>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+    </div>
+
+    </form>
+    <script src="{% static 'authentication/script.js' %}"></script>
+</body>
+
+</html>

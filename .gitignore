@@ -1,0 +1,19 @@
+# Python bytecode
+*.pyc
+__pycache__/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media/
+static/
+
+# Virtual environment
+venv_name/
+
+# IDE files (if applicable)
+.vscode/
+.idea/
